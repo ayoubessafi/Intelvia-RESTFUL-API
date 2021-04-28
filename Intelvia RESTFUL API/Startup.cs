@@ -90,6 +90,12 @@ namespace Intelvia_RESTFUL_API
             app.UseAuthentication();
             app.UseAuthorization();
 
+            app.UseCors(x => x
+                .AllowAnyMethod()
+                .AllowAnyHeader()
+                .SetIsOriginAllowed(origin => true) // allow any origin
+                .AllowCredentials());
+
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
